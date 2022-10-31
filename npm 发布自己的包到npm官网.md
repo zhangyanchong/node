@@ -21,7 +21,7 @@
     main.js
     ```
     
- 1.1编写组件代码
+ 1.1编写组件代码   
 这里我们就以pig-button组件为例，任意编写一点代码，代码如下：
 ```
 <template>
@@ -40,7 +40,7 @@ button {
 }
 </style>
 ```    
- 1.2 使用Vue插件模式
+ 1.2 使用Vue插件模式    
    这一步是封装组件中的重点，用到了Vue提供的一个公开方法：install。这个方法会在你使用Vue.use(plugin)时被调用，这样使得我们的插件注册到了全局，在子组件的任何地方都可以使用。
 在<span style='color:red'>package</span>目录下新建index.js文件，代码如下：
 ```
@@ -58,21 +58,21 @@ const install = function (Vue) {
 export default install; // 这个方法以后再使用的时候可以被use调用
 ```
 
-1.3 组件打包 （必须有）
+1.3 组件打包 （必须有）   
    最外层  修改我们项目得package.json文件，配置打包命令：
    在scripts 下面添加
    
     "package": "vue-cli-service build --target lib ./src/package/index.js --name pig-ui --dest pig-ui"
     
-1.4 打包
+1.4 打包   
    npm run  package
    打包执行完成后我们项目目录下就会多出一个pig-ui文件夹，存放的是打包后的文件。
 
-1.5 发布到npm
+1.5 发布到npm      
    在最外层 pig-ui 下面 执行 npm init -y  生成新的package.json 文件
    其中mian:"*.js" 为入口文件 很重要！！
    
-   执行npm publish --access public    //发布公有
+   执行npm publish --access public    //发布公有    pig-ui 下面执行
    
 1.6 新项目中应用 刚才发布的包
 ```
